@@ -1,0 +1,192 @@
+The Go Tool
+Evolution of development productivity
+
+Dusan Lilic
+Software Engineer at TruckTrack
+kortemy@gmail.com
+@kortemy_
+
+* Introduction
+
+.image img/hello.gif 670 _
+
+* What is development productivity?
+- Ability to perform long and/or repetitive tasks with ease, efficiency, and stress-free
+
+.image img/fire.gif 300 _
+
+How is it achieved?
+
+- Language features and ecosystem
+
+
+* Brief history of development environment
+- Beginning of time - 1990s: Terminal
+- 1990s - 2010s: IDE domination
+- 2010s: Terminal... again?
+
+.image img/whaat.gif 350 _
+
+* Go approach to development productivity
+Pursued and achieved 3 major goals:
+
+- Fast development
+- Fast compilation
+- Fast execution
+
+.image img/right.gif 300 _
+
+* Go approach to development productivity
+- Reinventing the developer environment
+- Strict development guidelines
+- Convention over configuration!
+.image img/butwhy.gif 350 _
+
+* Go approach to development productivity
+- Achieving coding standard through consistency
+
+.image img/yes.gif 400 _
+
+* Enter the terminal
+.image img/productivity.gif 450 _
+
+* The Go tool
+- Collection of command line applications
+- Included with the *go* binary, or as standalone executables
+Prerequisites:
+
+- Setting up your Go workspace (`$GOPATH`)
+- Pro tip: `$GOPATH=~`
+
+* Build / Install
+Build compiles the package (or current dir) and outputs the executable binary
+
+  $ go build [-o output] [-i] [build flags] [packages]
+
+Install also compiles the code, but installs executable or library to your workspace
+
+  $ go install [build flags] [packages]
+
+Examples:
+
+  $ go build
+  $ GOOS=windows GOARCH=386 go build -o hello.exe hello.go
+  $ go install
+
+* Run / Test
+- Run compiles the selected file in memory, and executes it
+- Source files must have `func` `main()` defined
+
+  $ go run [build flags] [files...] [arguments...]
+
+- Test runs test files in the package
+- Filenames must have `_test` sufix to be treated as tests
+
+  $ go test [build/test flags] [packages]
+
+Examples:
+
+  $ go run main.go
+  $ go test github.com/kortemy/lingo
+
+* Doc
+- Doc prints out the documentation for the specified package or a symbol
+
+  $ go doc [package | package symbol]
+
+- Standalone version `godoc` can also run a web server with all documentation from your workspace
+
+  $ godoc -http=:6060`
+
+Examples:
+
+  $ go doc fmt
+  $ go doc fmt Println
+
+* Get
+- Get downloads and installs remote packages
+- Acts as a dependency manager
+
+  $ go get [-d] [-f] [-fix] [-insecure] [-t] [-u] [build flags] [packages]
+
+- Still lacking with features, but constantly improving
+Examples:
+
+  $ go get -u github.com/kortemy/lingo
+
+* Fmt
+- Fmt formats your code to Go coding standard
+
+  $ go fmt [-n] [-x] [packages]
+
+- Standalone `gofmt` for more extensibility
+- Standalone `goimports` to add/remove imports automatically
+Examples:
+
+  $ go fmt
+  $ gofmt -d main.go
+
+* Fix
+- Fix finds Go programs that use old APIs and rewrites them to use newer ones.
+- Super useful when updating Go to a newer version
+
+  $ go fix [packages]
+
+Examples:
+
+  $ go fix
+
+* Lint / Vet
+- Code analysis and error checking
+- Lint will show you compile errors before compiling, point out missing documentation, etc.
+
+  $ golint [package|file]
+
+- Vet reports suspicious constructs not caught by the compiler
+
+  $ go vet [package|file]
+
+Examples:
+
+  $ golint
+  $ go vet main.go
+
+* Generate
+- Introduced to mitigate the lack of generics
+- Generate will generate code based on directives in source files
+
+  $ go generate [package]
+
+- Write directives as tagged comments `//go:generate` `[shell` `command]`
+- Commonly used to mock interfaces when writing tests
+Examples:
+
+  //go:generate mockery -inpkg -name=TestInterface
+  $ go generate
+
+* Other tools
+- Many other useful tools not used on a daily basis
+
+  $ go present
+  $ go playground
+- Lots of refactoring, benchmarking, profiling, and language parsing tools.
+
+* Editor integration
+.image img/success.gif 500 _
+
+* Editor integration
+- Go tool is editor friendly
+- Can output results to `stdout` instead of writing files
+- Easily embeddable
+
+Great community maintained tools for the editors
+
+- `gocode` - an autocomplete engine
+- `godef` - find and go to definition
+
+* Editor integration
+- If your favorite editor doesn't have a Go support plugin - write one yourself!
+.image img/nope.gif 400 _
+
+* Thank you and goodbye!
+.image img/goodbye.gif 400 _
